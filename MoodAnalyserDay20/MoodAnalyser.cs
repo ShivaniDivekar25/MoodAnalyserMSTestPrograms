@@ -24,6 +24,11 @@ namespace MoodAnalyserDay20
                 {
                     return "happy";
                 }
+                else if (message.ToLower().Equals(string.Empty))
+                {
+                    Console.WriteLine(message);
+                    throw new CustomMoodAnalyserException("Message should not be empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MESSAGE);
+                }
                 else
                 {
                     return "sad";
@@ -31,8 +36,7 @@ namespace MoodAnalyserDay20
             }
             catch (NullReferenceException ex)
             {
-                Console.WriteLine("Happy");
-                return default;
+                throw new CustomMoodAnalyserException("Message should not be empty", CustomMoodAnalyserException.ExceptionTypes.EMPTY_MESSAGE);
             }
         }
     }
