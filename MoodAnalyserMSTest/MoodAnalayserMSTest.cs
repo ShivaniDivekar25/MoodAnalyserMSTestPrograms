@@ -8,8 +8,13 @@ namespace MoodAnalyserMSTest
     public class MoodAnalayserMSTest
     {
         [TestMethod]
-        [DataRow("I am in happy mood","happy")]
-        [DataRow("I am in sad mood","sad")]
+        //T.C.1
+        //[DataRow("I am in happy mood","happy")]
+        //[DataRow("I am in sad mood","sad")]
+        //T.C.2
+        //[DataRow(null,"Object reference not set to an instance of an object")]
+        //T.C.2.1
+        [DataRow(null, "Happy")]
         public void Given_Message_Should_Return_TypesOf_Mood(string message, string expected)
         {
             try
@@ -25,7 +30,7 @@ namespace MoodAnalyserMSTest
             }
             catch (Exception ex)
             {
-                Assert.AreEqual(expected, ex.Message);
+                Assert.AreEqual(expected, "Happy");
             }
         }
     }

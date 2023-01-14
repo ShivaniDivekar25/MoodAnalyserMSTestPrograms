@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyserDay20
 {
+    //Created class
     public class MoodAnalyser
     {
         public string message;
+        //Created constructor
         public MoodAnalyser(string message)
         {
             this.message = message;
         }
+        //Created Analyse mood method
         public string AnalyseMood()
         {
             try
@@ -28,7 +31,7 @@ namespace MoodAnalyserDay20
             }
             catch (NullReferenceException ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Happy");
                 return default;
             }
         }
