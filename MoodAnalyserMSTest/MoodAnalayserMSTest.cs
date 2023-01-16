@@ -79,5 +79,26 @@ namespace MoodAnalyserMSTest
                 Assert.AreEqual(expectedMsg, ex.Message);
             }
         }
+        [TestMethod]
+        [TestCategory("Reflection")]
+        //T.C.5
+        public void Given_MoodAnalyser_With_Message_Using_Reflection_Return_Parameterized_Constructor()
+        {
+            string mesaage = "I am in happy mood";
+            MoodAnalyser expected = new MoodAnalyser(mesaage);
+            object actual = null;
+            try
+            {
+                //AAA methodology
+                //Act
+                actual = factory.CreateMoodAnalyserParameterizedObject("MoodAnalyser", "MoodAnalyser", mesaage);
+                actual.Equals(expected);
+            }
+            catch (CustomMoodAnalyserException exception)
+            {
+                //Assert
+                Assert.AreEqual("Constructor not found", exception.Message);
+            }
+        }
     }
 }
