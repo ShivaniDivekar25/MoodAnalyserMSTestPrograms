@@ -15,6 +15,10 @@ namespace MoodAnalyserDay20
         {
             this.message = message;
         }
+        public MoodAnalyser()
+        {
+            Console.WriteLine("Default constructor");
+        }
         //Created Analyse mood method
         public string AnalyseMood()
         {

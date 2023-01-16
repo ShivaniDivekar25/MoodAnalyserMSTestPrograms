@@ -12,7 +12,9 @@ namespace MoodAnalyserDay20
         public enum ExceptionTypes
         {
             NULL_MESSAGE,
-            EMPTY_MESSAGE
+            EMPTY_MESSAGE,
+            CLASS_NOT_FOUND,
+            NO_SUCH_METHOD
         }
         public CustomMoodAnalyserException(string msg, ExceptionTypes exceptionTypes) : base(msg)
         {

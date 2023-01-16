@@ -7,6 +7,7 @@ namespace MoodAnalyserMSTest
     [TestClass]
     public class MoodAnalayserMSTest
     {
+        MoodAnalyserFactory factory = new MoodAnalyserFactory();
         [TestMethod]
         //T.C.1
         //[DataRow("I am in happy mood","happy")]
@@ -50,6 +51,32 @@ namespace MoodAnalyserMSTest
             catch (CustomMoodAnalyserException ex)
             {
                 Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        [TestMethod]
+        [TestCategory("Reflection")]
+        //T.C.4.1
+        [DataRow("MoodAnalyser.MoodAnalyser", "MoodAnalyser")]
+        //T.C.4.2
+        //[DataRow("MoodAnalyser.MoodAnalyser", "MoodAnalyser1")]
+        //T.C.4.3
+        [DataRow("MoodAnalyser.MoodAnalyser1","MoodAnalyser")]
+        public void Gievn_Class_Info_Return_Default_Constructor(string className, string constructorName)
+        {
+            string expectedMsg = "Class not found";
+            //Arrange
+            try
+            {
+                //AAA Methodology
+                //Act
+                object expected = new MoodAnalyser();
+                object obj = factory.CreateMoodAnalyser("MoodAnalyser.MoodAnalyser", "MoodAnalyser");
+                expected.Equals(obj);
+            }
+            catch (CustomMoodAnalyserException ex)
+            {
+                //Assert
+                Assert.AreEqual(expectedMsg, ex.Message);
             }
         }
     }
