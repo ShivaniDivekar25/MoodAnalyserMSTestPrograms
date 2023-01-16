@@ -15,7 +15,8 @@ namespace MoodAnalyserDay20
             EMPTY_MESSAGE,
             CLASS_NOT_FOUND,
             CONSTRUCTOR_NOT_FOUND,
-            NO_SUCH_METHOD
+            NO_SUCH_METHOD,
+            METHOD_NOT_FOUND
         }
         public CustomMoodAnalyserException(string msg, ExceptionTypes exceptionTypes) : base(msg)
         {

@@ -3,38 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MoodAnalyserDay20
 {
-    //Created class
-    public class MoodAnalyserFactory
+    //Refactor class form MoodAnalyser to MoodAnalyserReflector
+    public class MoodAnalyserReflector
     {
-        //Created MoodAnalyser Method for default constructor
-        public object CreateMoodAnalyser(string className, string constructorName)
-        {
-            string pattern = @"." + constructorName + "$";
-            bool result = Regex.IsMatch(className, pattern);
-            if (result)
-            {
-                try
-                {
-                    Assembly excuting = Assembly.GetExecutingAssembly();
-                    Type moodAnalayseType = excuting.GetType(className);
-                    return Activator.CreateInstance(moodAnalayseType);
-                }
-                catch (ArgumentNullException ex)
-                {
-                    throw new CustomMoodAnalyserException("Class not found", CustomMoodAnalyserException.ExceptionTypes.CLASS_NOT_FOUND);
-                }
-            }
-            else 
-            {
-                throw new CustomMoodAnalyserException("Constructor not found", CustomMoodAnalyserException.ExceptionTypes.NO_SUCH_METHOD);
-            }
-        }
-        //Created Moodanalyser method for parameterized constructor
         public object CreateMoodAnalyserParameterizedObject(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyser);
@@ -74,7 +49,6 @@ namespace MoodAnalyserDay20
                 throw new Exception(ex.Message);
             }
         }
-        //Created invoke method
         public string InvokeAnalyseMood(string message, string methodName)
         {
             try

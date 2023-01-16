@@ -100,5 +100,32 @@ namespace MoodAnalyserMSTest
                 Assert.AreEqual("Constructor not found", exception.Message);
             }
         }
+        [TestMethod]
+        [TestCategory("Reflection")]
+        //T.C.6 
+        //T.C.6.1[Happy]
+        //T.C.6.2[ExceptionThrow]
+        //T.C.6 Refactor
+
+        public void Given_MoodAnalyser_Uisng_Reflection_Invoke_Method()
+        {
+            string message = "I am in happy mood";
+            string methodName = "AnalyseMood";
+            string expected = "happy";
+            string expectedMsg = "Method not found";
+            string actual = "";
+            try
+            {
+                //AAA Methodology
+                //Act
+                actual = factory.InvokeAnalyseMood(message, methodName);
+                Assert.AreEqual(expected, actual);
+            }
+            catch (CustomMoodAnalyserException exception)
+            {
+                //ssert
+                Assert.AreEqual(expectedMsg, exception.Message);
+            }
+        }
     }
 }
